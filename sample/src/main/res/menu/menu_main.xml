@@ -13,5 +13,17 @@
         android:checked="true"
         android:orderInCategory="2"
         android:title="Clickable"/>
+    <item
+        android:id="@+id/menu_unclickableRows"
+        android:orderInCategory="3"
+        android:title="Set unclickable rows"/>
+    <item
+        android:id="@+id/menu_unswipeableRows"
+        android:orderInCategory="4"
+        android:title="Set unswipeable rows"/>
+    <item
+        android:id="@+id/menu_openOptions"
+        android:orderInCategory="4"
+        android:title="Open Swipe Options"/>
 
 </menu>

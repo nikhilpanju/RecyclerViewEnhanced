@@ -4,7 +4,6 @@
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white"
                 android:orientation="vertical">
 
     <LinearLayout
@@ -142,6 +141,7 @@
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:clickable="true"
+        android:elevation="4dp"
         android:focusable="true"
         android:orientation="horizontal"
         android:visibility="visible">
@@ -197,5 +197,6 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_alignParentBottom="true"
-        android:background="#67676767"/>
+        android:background="#67676767"
+        android:elevation="5dp"/>
 </RelativeLayout>
