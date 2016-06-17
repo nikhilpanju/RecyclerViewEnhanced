@@ -53,6 +53,7 @@ dependencies {
                 }
            }
        });
+  ```
        
 ## Addition Functionality
 * Use `setUnSwipeableRows()` to disable certain rows from swiping. Using this also displays an "difficult-to-slide" animation when trying to slide an unswipeable row.
