@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements RecyclerTouchList
 
         onTouchListener = new RecyclerTouchListener(this, mRecyclerView);
         onTouchListener
+                .setIndependentViews(R.id.rowButton)
+                .setViewsToFade(R.id.rowButton)
                 .setClickable(new RecyclerTouchListener.OnRowClickListener() {
                     @Override
                     public void onRowClicked(int position) {
@@ -64,8 +66,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerTouchList
                         ToastUtil.makeToast(getApplicationContext(), "Button in row " + (position + 1) + " clicked!");
                     }
                 })
-                .setIndependentViews(R.id.rowButton)
-                .setViewsToFade(R.id.rowButton)
+                .setSwipeOptionViews(R.id.add, R.id.edit, R.id.change)
                 .setSwipeable(R.id.rowFG, R.id.rowBG, new RecyclerTouchListener.OnSwipeOptionsClickListener() {
                     @Override
                     public void onSwipeOptionClicked(int viewID, int position) {
@@ -80,8 +81,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerTouchList
                         message += " clicked for row " + (position + 1);
                         ToastUtil.makeToast(getApplicationContext(), message);
                     }
-                })
-                .setSwipeOptionViews(R.id.add, R.id.edit, R.id.change);
+                });
         mRecyclerView.addOnItemTouchListener(onTouchListener);
     }
 
@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerTouchList
 
     private void showSingleSelectDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
-                .setTitle("Set UnClickable Rows")
+                .setTitle("Open Swipe Options for row: ")
                 .setSingleChoiceItems(dialogItems, 0, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {

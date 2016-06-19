@@ -282,7 +282,8 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener, 
     }
 
     public void openSwipeOptions(int position) {
-        if (!swipeable || rView.getChildAt(position) == null)
+        if (!swipeable || rView.getChildAt(position) == null
+                || unSwipeableRows.contains(position))
             return;
         if (bgWidth < 2) {
             if (act.findViewById(bgViewID) != null)
