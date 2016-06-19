@@ -9,6 +9,10 @@ dependencies {
   compile 'com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.0.0'
 }
 ```
+## Demo
+Build the sample application to try RecyclerViewEnhanced
+![alt text](https://github.com/nikhilpanju/RecyclerViewEnhanced/blob/master/sample/src/common/images/Demo.gif "Demo")
+
 ## Configuring
 * #### Create an instance of `RecyclerTouchListener`
   `onTouchListener = new RecyclerTouchListener(this, mRecyclerView);`
