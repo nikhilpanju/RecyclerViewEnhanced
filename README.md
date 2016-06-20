@@ -41,7 +41,9 @@ Build the sample application to try RecyclerViewEnhanced
             }
         })               
   ```
+  
 * #### Enable Swipe Functionality
+
   Set the views for which you require a click listener and enable swiping by using `setSwipeable()`
   ```
   .setSwipeOptionViews(R.id.add, R.id.edit, R.id.change)
