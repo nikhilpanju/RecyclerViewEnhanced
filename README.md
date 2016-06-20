@@ -59,7 +59,7 @@ Build the sample application to try RecyclerViewEnhanced
        });
   ```
        
-## Addition Functionality
+## Additional Functionality
 * Use `setUnSwipeableRows()` to disable certain rows from swiping. Using this also displays an "difficult-to-slide" animation when trying to slide an unswipeable row.
 * Use `setUnClickableRows()` to disable click actions for certain rows. (Note: This also prevents the independentViews from being clicked).
 * `openSwipeOptions()` opens the swipe options for a specific row.
