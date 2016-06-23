@@ -21,7 +21,7 @@ import com.nikhilpanju.recyclerviewenhanced.RecyclerTouchListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements RecyclerTouchListener.RecyclerTouchListenerHelper {
+public class MainActivityVertical extends AppCompatActivity implements RecyclerTouchListener.RecyclerTouchListenerHelper {
 
     RecyclerView mRecyclerView;
     MainAdapter mAdapter;
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerTouchList
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         mAdapter = new MainAdapter(this, getData());
         mRecyclerView.setAdapter(mAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
 
         onTouchListener = new RecyclerTouchListener(this, mRecyclerView);
         onTouchListener
@@ -82,6 +82,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerTouchList
                         ToastUtil.makeToast(getApplicationContext(), message);
                     }
                 });
+        mRecyclerView.addOnItemTouchListener(onTouchListener);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         mRecyclerView.addOnItemTouchListener(onTouchListener);
     }
 
@@ -207,7 +213,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerTouchList
 
         @Override
         public MainViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = inflater.inflate(R.layout.recycler_row, parent, false);
+            View view = inflater.inflate(R.layout.recycler_vertical_row, parent, false);
             return new MainViewHolder(view);
         }
 
