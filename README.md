@@ -9,6 +9,17 @@ dependencies {
   compile 'com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.0.0'
 }
 ```
+
+## Features
+* Supports API 14+ (Earlier APIs not tested
+* Supports any view for "Swipe Options"
+* Doesn't require any new adapters or new views. Works with any existing RecyclerViews.
+* Requires adding `OnItemTouchListener` to the RecyclerView
+* Supports clicking and swiping functionalities.
+* Supports disabling clicking and swiping for particular items/rows.
+* Supports `independentViews` in your items/rows (Read below for more information)
+* Supports `fadeViews` in your items/rows (Read below for more information)
+
 ## Demo
 Build the sample application to try RecyclerViewEnhanced
 ![alt text](https://github.com/nikhilpanju/RecyclerViewEnhanced/blob/master/sample/src/common/images/Demo.gif "Demo")
