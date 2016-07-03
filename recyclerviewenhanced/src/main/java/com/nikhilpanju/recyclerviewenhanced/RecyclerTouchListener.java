@@ -11,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -371,12 +372,14 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener, 
             ObjectAnimator translateAnimator = ObjectAnimator.ofFloat(
                     fgView, View.TRANSLATION_X, -bgWidth);
             translateAnimator.setDuration(duration);
+            translateAnimator.setInterpolator(new DecelerateInterpolator(1.5f));
             translateAnimator.start();
             animateFadeViews(downView, 0f, duration);
         } else if (animateType == Animation.CLOSE) {
             ObjectAnimator translateAnimator = ObjectAnimator.ofFloat(
                     fgView, View.TRANSLATION_X, 0f);
             translateAnimator.setDuration(duration);
+            translateAnimator.setInterpolator(new DecelerateInterpolator(1.5f));
             translateAnimator.start();
             animateFadeViews(downView, 1f, duration);
         }
@@ -388,11 +391,13 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener, 
         if (animateType == Animation.OPEN) {
             translateAnimator = ObjectAnimator.ofFloat(fgView, View.TRANSLATION_X, -bgWidth);
             translateAnimator.setDuration(duration);
+            translateAnimator.setInterpolator(new DecelerateInterpolator(1.5f));
             translateAnimator.start();
             animateFadeViews(downView, 0f, duration);
         } else /*if (animateType == Animation.CLOSE)*/ {
             translateAnimator = ObjectAnimator.ofFloat(fgView, View.TRANSLATION_X, 0f);
             translateAnimator.setDuration(duration);
+            translateAnimator.setInterpolator(new DecelerateInterpolator(1.5f));
             translateAnimator.start();
             animateFadeViews(downView, 1f, duration);
         }
