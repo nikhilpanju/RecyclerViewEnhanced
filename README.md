@@ -9,6 +9,21 @@ dependencies {
   compile 'com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.0.0'
 }
 ```
+
+## Features
+* Supports API 14+ (Earlier APIs not tested
+* Supports any view for "Swipe Options"
+* Doesn't require any new adapters or new views. Works with any existing RecyclerViews.
+* Requires adding `OnItemTouchListener` to the RecyclerView
+* Supports clicking and swiping functionalities.
+* Supports disabling clicking and swiping for particular items/rows.
+* Supports `independentViews` in your items/rows (Read below for more information)
+* Supports `fadeViews` in your items/rows (Read below for more information)
+
+## Demo
+Build the sample application to try RecyclerViewEnhanced
+![alt text](https://github.com/nikhilpanju/RecyclerViewEnhanced/blob/master/sample/src/common/images/Demo.gif "Demo")
+
 ## Configuring
 * #### Create an instance of `RecyclerTouchListener`
   `onTouchListener = new RecyclerTouchListener(this, mRecyclerView);`
@@ -37,7 +52,9 @@ dependencies {
             }
         })               
   ```
+  
 * #### Enable Swipe Functionality
+
   Set the views for which you require a click listener and enable swiping by using `setSwipeable()`
   ```
   .setSwipeOptionViews(R.id.add, R.id.edit, R.id.change)
@@ -55,7 +72,7 @@ dependencies {
        });
   ```
        
-## Addition Functionality
+## Additional Functionality
 * Use `setUnSwipeableRows()` to disable certain rows from swiping. Using this also displays an "difficult-to-slide" animation when trying to slide an unswipeable row.
 * Use `setUnClickableRows()` to disable click actions for certain rows. (Note: This also prevents the independentViews from being clicked).
 * `openSwipeOptions()` opens the swipe options for a specific row.
@@ -83,3 +100,19 @@ public boolean dispatchTouchEvent(MotionEvent ev) {
 ```
 ## Author
 * Nikhil Panju ([Github](https://github.com/nikhilpanju))
+
+
+## License
+Copyright 2016 Nikhil Panju
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+([http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0))
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
