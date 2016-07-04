@@ -6,7 +6,7 @@ Add this to your build.gradle file
 
 ```
 dependencies {
-  compile 'com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.0.0'
+  compile 'com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.1.0'
 }
 ```
 
@@ -71,8 +71,29 @@ Build the sample application to try RecyclerViewEnhanced
            }
        });
   ```
+  
+  * #### Adding the listener to the RecyclerView
+  
+    In `onResume()` add the listener: 
+    ```
+    mRecyclerView.addOnItemTouchListener(onTouchListener);
+    ```
+    In `onPause()` remove the listener: 
+    ```
+    mRecyclerView.removeOnItemTouchListener(onTouchListener);
+    ```
        
 ## Additional Functionality
+* Use `onRowLongClickListener` to receive long click events
+  ```
+  .setLongClickable(true, new RecyclerTouchListener.OnRowLongClickListener() {
+                    @Override
+                    public void onRowLongClicked(int position) {
+                        ToastUtil.makeToast(getApplicationContext(), "Row " + (position + 1) + " long clicked!");
+                    }
+                })
+  ```
+  
 * Use `setUnSwipeableRows()` to disable certain rows from swiping. Using this also displays an "difficult-to-slide" animation when trying to slide an unswipeable row.
 * Use `setUnClickableRows()` to disable click actions for certain rows. (Note: This also prevents the independentViews from being clicked).
 * `openSwipeOptions()` opens the swipe options for a specific row.
