@@ -66,6 +66,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerTouchList
                         ToastUtil.makeToast(getApplicationContext(), "Button in row " + (position + 1) + " clicked!");
                     }
                 })
+                .setLongClickable(true, new RecyclerTouchListener.OnRowLongClickListener() {
+                    @Override
+                    public void onRowLongClicked(int position) {
+                        ToastUtil.makeToast(getApplicationContext(), "Row " + (position + 1) + " long clicked!");
+                    }
+                })
                 .setSwipeOptionViews(R.id.add, R.id.edit, R.id.change)
                 .setSwipeable(R.id.rowFG, R.id.rowBG, new RecyclerTouchListener.OnSwipeOptionsClickListener() {
                     @Override

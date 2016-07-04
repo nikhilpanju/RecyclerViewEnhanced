@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:gravity="right"
         android:orientation="horizontal">
 
 
@@ -21,7 +22,8 @@
             android:background="@color/swipeoption_blue"
             android:clickable="true"
             android:focusable="true"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -108,7 +110,7 @@
                 android:layout_height="match_parent"
                 android:layout_centerInParent="true"
                 android:background="?android:selectableItemBackground"
-                android:gravity="center"
+                android:gravity="center_vertical|left"
                 android:orientation="vertical">
 
                 <ImageView
