@@ -88,8 +88,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerTouchList
                         ToastUtil.makeToast(getApplicationContext(), message);
                     }
                 });
-        mRecyclerView.addOnItemTouchListener(onTouchListener);
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mRecyclerView.addOnItemTouchListener(onTouchListener); }
 
     @Override
     protected void onPause() {
