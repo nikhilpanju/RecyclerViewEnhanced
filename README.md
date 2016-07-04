@@ -72,16 +72,16 @@ Build the sample application to try RecyclerViewEnhanced
        });
   ```
   
-  * #### Adding the listener to the RecyclerView
-  
-    In `onResume()` add the listener: 
-    ```
-    mRecyclerView.addOnItemTouchListener(onTouchListener);
-    ```
-    In `onPause()` remove the listener: 
-    ```
-    mRecyclerView.removeOnItemTouchListener(onTouchListener);
-    ```
+* #### Adding the listener to the RecyclerView
+
+  In `onResume()` add the listener: 
+  ```
+  mRecyclerView.addOnItemTouchListener(onTouchListener);
+  ```
+  In `onPause()` remove the listener: 
+  ```
+  mRecyclerView.removeOnItemTouchListener(onTouchListener);
+  ```
        
 ## Additional Functionality
 * Use `onRowLongClickListener` to receive long click events
