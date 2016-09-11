@@ -19,7 +19,9 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener, OnActivityTouchListener {
     private static final String TAG = "RecyclerTouchListener";
@@ -33,6 +35,7 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener, 
     List<Integer> independentViews;
     List<Integer> unClickableRows;
     List<Integer> optionViews;
+    Set<Integer> ignoredViewTypes;
     // Cached ViewConfiguration and system-wide constant values
     private int touchSlop;
     private int minFlingVel;
@@ -109,6 +112,7 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener, 
         fgPartialViewClicked = false;
         unSwipeableRows = new ArrayList<>();
         unClickableRows = new ArrayList<>();
+        ignoredViewTypes = new HashSet<>();
         independentViews = new ArrayList<>();
         optionViews = new ArrayList<>();
         fadeViews = new ArrayList<>();
@@ -189,6 +193,12 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener, 
 
     public RecyclerTouchListener setUnClickableRows(Integer... rows) {
         this.unClickableRows = new ArrayList<>(Arrays.asList(rows));
+        return this;
+    }
+
+    public RecyclerTouchListener setIgnoredViewTypes(Integer... viewTypes) {
+        ignoredViewTypes.clear();
+        ignoredViewTypes.addAll(Arrays.asList(viewTypes));
         return this;
     }
 
@@ -320,7 +330,7 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener, 
 
     public void openSwipeOptions(int position) {
         if (!swipeable || rView.getChildAt(position) == null
-                || unSwipeableRows.contains(position))
+                || unSwipeableRows.contains(position) || shouldIgnoreAction(position))
             return;
         if (bgWidth < 2) {
             if (act.findViewById(bgViewID) != null)
@@ -508,6 +518,12 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener, 
                     touchedX = motionEvent.getRawX();
                     touchedY = motionEvent.getRawY();
                     touchedPosition = rView.getChildAdapterPosition(touchedView);
+
+                    if (shouldIgnoreAction(touchedPosition)) {
+                        touchedPosition = ListView.INVALID_POSITION;
+                        return false;   // <-- guard here allows for ignoring events, allowing more than one view type and preventing NPE
+                    }
+
                     if (longClickable) {
                         mLongClickPerformed = false;
                         handler.postDelayed(mLongPressed, LONG_CLICK_DELAY);
@@ -887,6 +903,10 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener, 
         int y = (int) ev.getRawY();
         if (swipeable && bgVisible && ev.getActionMasked() == MotionEvent.ACTION_DOWN
                 && y < heightOutsideRView) closeVisibleBG(null);
+    }
+
+    private boolean shouldIgnoreAction(int touchedPosition) {
+        return rView == null || ignoredViewTypes.contains(rView.getAdapter().getItemViewType(touchedPosition));
     }
 
     private enum Animation {
