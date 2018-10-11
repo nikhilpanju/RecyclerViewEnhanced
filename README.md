@@ -11,7 +11,7 @@ dependencies {
 ```
 
 ## Features
-* Supports API 14+ (Earlier APIs not tested
+* Supports API 14+ (Earlier APIs not tested)
 * Supports any view for "Swipe Options"
 * Doesn't require any new adapters or new views. Works with any existing RecyclerViews.
 * Requires adding `OnItemTouchListener` to the RecyclerView
