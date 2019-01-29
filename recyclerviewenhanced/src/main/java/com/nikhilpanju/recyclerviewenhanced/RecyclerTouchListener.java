@@ -528,7 +528,7 @@ public class RecyclerTouchListener implements RecyclerView.OnItemTouchListener, 
                         mLongClickPerformed = false;
                         handler.postDelayed(mLongPressed, LONG_CLICK_DELAY);
                     }
-                    if (swipeable) {
+                    if (swipeable && !unSwipeableRows.contains(touchedPosition)) {
                         mVelocityTracker = VelocityTracker.obtain();
                         mVelocityTracker.addMovement(motionEvent);
                         fgView = touchedView.findViewById(fgViewID);
